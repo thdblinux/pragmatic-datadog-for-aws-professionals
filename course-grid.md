@@ -1,4 +1,4 @@
-labs for https://www.udemy.com/course/pragmatic-datadog-for-aws-professionals/  
+labs for [https://www.udemy.com/course/pragmatic-datadog-for-aws-professionals/](https://www.udemy.com/course/pragmatic-datadog-for-aws-professionals/?referralCode=0A025FFCDA75F873488A)
 
 ||||
 |-|-|-|

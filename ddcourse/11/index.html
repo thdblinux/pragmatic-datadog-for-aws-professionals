@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Datadog RUM Test</title>
+
+    <!-- Datadog RUM - CDN Async -->
+    <script>
+        (function (h, o, u, n, d) {
+            h = h[d] = h[d] || {
+                q: [],
+                onReady: function (c) {
+                    h.q.push(c);
+                }
+            };
+            d = o.createElement(u);
+            d.async = 1;
+            d.src = n;
+            n = o.getElementsByTagName(u)[0];
+            n.parentNode.insertBefore(d, n);
+        })(window, document, 'script', 'https://www.datadoghq-browser-agent.com/us1/v6/datadog-rum.js', 'DD_RUM');
+
+        window.DD_RUM.onReady(function () {
+            window.DD_RUM.init({
+                clientToken: '<CLIENT_TOKEN>',
+                applicationId: '<APPLICATION_ID>',
+                site: 'datadoghq.com',
+
+                // service: 'my-web-application',
+                // env: 'production',
+                // version: '1.0.0',
+
+                sessionSampleRate: 100,
+                sessionReplaySampleRate: 100,
+                enablePrivacyForActionName: true,
+
+                // RUM + Tracing
+                allowedTracingUrls: [
+                    "https://api.example.com",
+                    /https:\/\/.*\.my-api-domain\.com/,
+                    function (url) {
+                        return url.startsWith("https://api.example.com");
+                    }
+                ],
+
+                trackResources: true,
+                trackLongTasks: true,
+                trackUserInteractions: true
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button
+        type="button"
+        onclick="console.log('clicked');"
+        style="
+            font-size: 80px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        ">
+        click me!
+    </button>
+</body>
+</html>
